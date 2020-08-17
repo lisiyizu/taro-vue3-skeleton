@@ -32,7 +32,7 @@
 <script>
 import { ref, onMounted } from 'vue';
 import skeleton from './index.skeleton.vue';
-const img = 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3870849579,1183618012&fm=26&gp=0.jpg'; ;
+const img = 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3870849579,1183618012&fm=26&gp=0.jpg';
 export default {
     name: 'Index',
     components: { skeleton },
