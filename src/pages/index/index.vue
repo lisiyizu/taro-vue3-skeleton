@@ -2,7 +2,7 @@
   <view>
     <skeleton v-if="loading"/>
     <view class="container">
-      <view class="top-banner" data-skeleton-hide="hideBanner" :hidden="!hideBanner">
+      <view class="top-banner">
         <swiper class="swiper" autoplay>
           <block v-for="item in swiperList" :key="item">
             <swiper-item>
@@ -11,13 +11,13 @@
           </block>
         </swiper>
       </view>
-      <view class="top-nav" bindtap="onTap" data-skeleton-hide="hideCategory" :hidden="!hideCategory">
+      <view class="top-nav" bindtap="onTap">
         <view class="nav_item" v-for="item in navs" :key="item">
           <image class="nav_item_image" :src="item"></image>
           <view class="nav_item_title"><text>测试标题</text></view>
         </view>
       </view>
-      <view class="middle-content" data-skeleton-list data-skeleton-hide="hideGoods" :hidden="!hideGoods">
+      <view class="middle-content">
         <view class="content_item" v-for="item in list" :key="item.id" >
           <image class="content_item_img" mode="scaleToFill" :src="item.icon"></image>
           <view class="content_item_text">
@@ -38,10 +38,9 @@ export default {
     components: { skeleton },
     setup () {
         const loading = ref(true);
-        const hideCategory = ref(false);
-        const hideGoods = ref(false);
-        const hideFooter = ref(false);
         const hideBanner = ref(false);
+        const hideCenter = ref(false);
+        const hideList = ref(false);
 
         const swiperList = ref([]);
         const navs = ref([]);
@@ -50,7 +49,15 @@ export default {
         onMounted(() => {
             setTimeout(() => {
                 swiperList.value = ['demo-text-1', 'demo-text-2', 'demo-text-3'];
+                hideBanner.value = true;
+            }, 2000);
+
+            setTimeout(() => {
                 navs.value = new Array(5).fill(img);
+                hideCenter.value = true;
+            }, 4000);
+
+            setTimeout(() => {
                 list.value = [{
                     text: '小程序是一种新的开放能力，开发者可以快速地开发一个小程序。小程序可以在微信内被便捷地获取和传播。',
                     id: 1,
@@ -67,23 +74,21 @@ export default {
                     icon: img
                 }];
                 loading.value = false;
-            }, 3000);
+                hideList.value = true;
+            }, 6000);
         });
 
         return {
             //
             loading,
-            hideCategory,
-            hideGoods,
-            hideFooter,
             hideBanner,
+            hideCenter,
+            hideList,
             //
             swiperList,
             navs,
             list
         };
-    },
-    progressiveLoad () {
     }
 };
 </script>
@@ -99,6 +104,7 @@ page {
   left: 0;
   height: 200px;
   width: 100%;
+  z-index: 1
 }
 
 .top-nav {
@@ -110,6 +116,7 @@ page {
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
+  z-index: 1
 }
 
 .nav_item {
@@ -162,6 +169,7 @@ page {
   top: 440px;
   height: 360px;
   font-size: 28px;
+  z-index: 1
 }
 
 .footer {
