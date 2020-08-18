@@ -11,7 +11,7 @@
           </block>
         </swiper>
       </view>
-      <view class="top-nav" bindtap="onTap">
+      <view class="top-nav">
         <view class="nav_item" v-for="item in navs" :key="item">
           <image class="nav_item_image" :src="item"></image>
           <view class="nav_item_title"><text>测试标题</text></view>
@@ -104,7 +104,7 @@ page {
   left: 0;
   height: 200px;
   width: 100%;
-  z-index: 1
+  z-index: 1;
 }
 
 .top-nav {
@@ -116,7 +116,7 @@ page {
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
-  z-index: 1
+  z-index: 1;
 }
 
 .nav_item {
@@ -134,6 +134,7 @@ page {
 
 .nav_item_title {
   margin-top: 20px;
+  background: white;
 }
 
 .content {
@@ -162,6 +163,7 @@ page {
 
 .content_item_text {
   display: inline-block;
+  background: white;
 }
 
 .middle-content {
@@ -169,7 +171,7 @@ page {
   top: 440px;
   height: 360px;
   font-size: 28px;
-  z-index: 1
+  z-index: 1;
 }
 
 .footer {
